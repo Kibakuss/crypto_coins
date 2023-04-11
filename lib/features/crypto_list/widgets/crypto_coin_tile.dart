@@ -1,13 +1,14 @@
+import 'package:cripto_coins/repositories/crypto_coins/models/crypto_coin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CryotoCoinTile extends StatelessWidget {
   const CryotoCoinTile({
     Key? key,
-    required this.coinName,
+    required this.coin,
   }) : super(key: key);
 
-  final String coinName;
+  final CryptoCoin coin;
 
   @override
   Widget build(BuildContext context) {
@@ -19,18 +20,18 @@ class CryotoCoinTile extends StatelessWidget {
         width: 30,
       ),
       title: Text(
-        coinName,
+        coin.name,
         style: theme.textTheme.bodyMedium,
       ),
       subtitle: Text(
-        '200000\$',
+        ' ${coin.priceInUSD} \$',
         style: theme.textTheme.labelSmall,
       ),
       trailing: const Icon(Icons.arrow_forward_ios),
       onTap: () {
         Navigator.of(context).pushNamed(
           '/coin',
-          arguments: coinName,
+          arguments: coin,
         );
       },
     );
