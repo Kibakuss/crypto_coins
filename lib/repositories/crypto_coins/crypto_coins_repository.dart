@@ -1,9 +1,14 @@
+import 'package:cripto_coins/repositories/crypto_coins/abstract_coins_repository.dart';
 import 'package:cripto_coins/repositories/crypto_coins/models/crypto_coin.dart';
 import 'package:dio/dio.dart';
 
-class CryptoCoinsRepository {
+class CryptoCoinsRepository implements AbstractCoinsRepository {
+  final Dio dio;
+
+  CryptoCoinsRepository({required this.dio});
+  @override
   Future<List<CryptoCoin>> getCoinsList() async {
-    final response = await Dio().get(
+    final response = await dio.get(
         'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,BNB,AID,CAG,DOV&tsyms=USD');
     // print(response);
     final data = response.data as Map<String, dynamic>;
