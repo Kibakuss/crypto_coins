@@ -34,17 +34,20 @@ class _CryptoCoinScreenState extends State<CryptoCoinScreen> {
         bloc: _coinDetailBloc,
         builder: (context, state) {
           if (state is CryptoCoinDetailsLoaded) {
-            final coinDetails = state.coinDetails;
+            final coin = state.coin;
+            final coinDetails = coin.detail;
             return Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   CircleAvatar(
-                      radius: 40, child: Image.network(coinDetails.imageUrl)),
+                      radius: 40,
+                      child: Image.network(coinDetails.fullImageUrl)),
                   const SizedBox(
                     height: 20,
                   ),
+                  Text(coin.name),
                   Container(
                     color: Colors.black54,
                     // height: 40,

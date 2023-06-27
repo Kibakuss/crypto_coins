@@ -10,11 +10,11 @@ class CryptoCoinDetailState extends Equatable {
 class CryptoCoinDetailLoading extends CryptoCoinDetailState {}
 
 class CryptoCoinDetailsLoaded extends CryptoCoinDetailState {
-  final CryptoCoinDetail coinDetails;
+  final CryptoCoin coin;
 
-  const CryptoCoinDetailsLoaded(this.coinDetails);
+  const CryptoCoinDetailsLoaded(this.coin);
   @override
-  List<Object> get props => [coinDetails];
+  List<Object> get props => [coin];
 }
 
 class CryptoCoinDetailsLoadingFailure extends CryptoCoinDetailState {
