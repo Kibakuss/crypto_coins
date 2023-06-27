@@ -6,6 +6,7 @@ import 'package:cripto_coins/repositories/crypto_coins/abstract_coins_repository
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:talker_flutter/talker_flutter.dart';
 
 class CryptoListScreen extends StatefulWidget {
   const CryptoListScreen({
@@ -29,6 +30,16 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
     return Scaffold(
         appBar: AppBar(
           title: const Text('CryptoCurrenciesList'),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>
+                        TalkerScreen(talker: GetIt.I<Talker>()),
+                  ));
+                },
+                icon: const Icon(Icons.local_atm))
+          ],
         ),
         body: RefreshIndicator(
           onRefresh: () async {
